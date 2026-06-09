@@ -56,15 +56,15 @@
                         <tr>
                             <td class="ps-4 fw-medium text-muted">{{ $stagiaire->matricule }}</td>
                             <td>
-                                <div class="d-flex align-items-center">
+                                <a href="{{ route('gs.stagiaires.show', $stagiaire->id) }}" class="text-decoration-none text-dark d-flex align-items-center">
                                     <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
                                         <span class="fw-bold">{{ substr($stagiaire->prenom, 0, 1) }}{{ substr($stagiaire->nom, 0, 1) }}</span>
                                     </div>
                                     <div>
-                                        <div class="fw-bold">{{ $stagiaire->nom }} {{ $stagiaire->prenom }}</div>
+                                        <div class="fw-bold text-primary">{{ $stagiaire->nom }} {{ $stagiaire->prenom }}</div>
                                         <div class="text-muted small">{{ $stagiaire->cin }}</div>
                                     </div>
-                                </div>
+                                </a>
                             </td>
                             <td><span class="badge bg-secondary">{{ $stagiaire->groupe->nom }}</span></td>
                             <td><span class="badge bg-{{ $stagiaire->statut == 'actif' ? 'success' : 'danger' }}">{{ ucfirst($stagiaire->statut) }}</span></td>

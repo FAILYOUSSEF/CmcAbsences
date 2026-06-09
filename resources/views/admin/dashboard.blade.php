@@ -100,10 +100,10 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: @json($labelsMois ?? ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin']),
+            labels: {!! json_encode($labelsMois ?? ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin']) !!},
             datasets: [{
                 label: 'Absences (Heures)',
-                data: @json($absencesParMois ?? [120, 190, 150, 170, 140, 90]),
+                data: {!! json_encode($absencesParMois ?? [120, 190, 150, 170, 140, 90]) !!},
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1,

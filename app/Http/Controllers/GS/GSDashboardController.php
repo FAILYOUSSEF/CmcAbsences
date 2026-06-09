@@ -106,4 +106,19 @@ class GSDashboardController extends Controller
 
         return view('gs.alerts', compact('alerts'));
     }
+
+    public function show($id)
+    {
+        $pole_id = $this->getPoleId();
+        $stagiaire = Stagiaire::whereHas('groupe', fn($q) => $q->where('pole_id', $pole_id))
+            ->with(['groupe.filiere', 'alerts'])
+            ->findOrFail($id);
+
+        $history = $stagiaire->presences()
+            ->with('seance.formateur')
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
+
+        return view('gs.show', compact('stagiaire', 'history'));
+    }
 }

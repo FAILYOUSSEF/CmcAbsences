@@ -55,6 +55,7 @@ Route::middleware(['auth', 'role:gs', 'check_pole'])->prefix('gs')->name('gs.')-
     Route::get('/dashboard', [GSDashboardController::class, 'index'])->name('dashboard');
     Route::get('/groupes', [GSDashboardController::class, 'groupes'])->name('groupes');
     Route::get('/stagiaires', [GSDashboardController::class, 'stagiaires'])->name('stagiaires');
+    Route::get('/stagiaires/{stagiaire}', [GSDashboardController::class, 'show'])->name('stagiaires.show');
     Route::get('/statistiques', [GSDashboardController::class, 'statistiques'])->name('statistiques');
     Route::get('/exports', [GSExportController::class, 'index'])->name('exports.index');
     Route::post('/exports/generate', [GSExportController::class, 'generate'])->name('exports.generate');
